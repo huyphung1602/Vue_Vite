@@ -6,9 +6,8 @@
       placeholder="Filter Search"
       v-model="query"
     >
-    <p>
-      {{ query }}
-    </p>
+    {{ query.value }}
+    <button @click='reset'> Reset </button>
   </div>
 </template>
 
@@ -17,9 +16,15 @@ import { ref } from 'vue';
 
 export default {
   setup () {
-    const query = ref('')
+    const query = ref('');
+
+    const reset = (evt) => {
+      query.value = ''; // clears the query
+    }
+
     return {
-      query
+      reset,
+      query,
     }
   }
 }
